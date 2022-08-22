@@ -13,6 +13,6 @@ FROM scratch
 
 WORKDIR /app
 
-COPY --from=build /app/go_codeeducation ./
+COPY --from=build /app/go_codeeducation .
 
 ENTRYPOINT [ "./go_codeeducation" ]
