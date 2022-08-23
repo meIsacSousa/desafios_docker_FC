@@ -1,0 +1,38 @@
+version: '3'
+services:
+  node:
+    build:
+      context: ./node
+      dockerfile: Dockerfile
+    container_name: "node-app"
+    networks:
+      - application
+    depends_on:
+      - database
+    restart: on-failure
+
+  database:
+    image: mysql
+    networks:
+      - application
+    container_name: "mysql-db"
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: fc_challenge
+
+  server:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: "nginx-app"
+    networks:
+      - application
+    depends_on:
+      - node
+    ports:
+      - "8080:80"
+    restart: on-failure
+
+networks:
+  application:
+    driver: bridge
