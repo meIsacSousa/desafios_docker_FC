@@ -3,7 +3,7 @@
 ### Para iniciar a aplicação
 
 ``` bash
-    docker-compose up -d
+docker-compose up -d
 ```
 Aplicação estará acessível através da porta 8080.
 
