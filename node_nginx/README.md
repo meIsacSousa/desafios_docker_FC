@@ -3,11 +3,10 @@
 ### Para iniciar a aplicação
 
 ``` bash
-    docker compose-up -d
+    docker-compose up -d
 ```
-
-Foi incluído uma Política de restart como politica de retry em relação ao banco de dados.
+Aplicação estará acessível através da porta 8080.
 
 ### Ajuste planejado
 
-- Incluir wait-for-it
+Foi incluído restart nos containers do node e do Nginx como uma politica de retry em relação ao banco de dados que leva mais tempo para ser iniciado, uma previsão de ajuste é a inclusão do wait-for-it para que o container inicie apenas após o mysql ficar "ready to connections"
