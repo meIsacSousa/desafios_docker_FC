@@ -25,6 +25,7 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     container_name: "nginx-app"
+    entrypoint: ["dockerize", "-wait", "tcp://node:3000", "-timeout", "30s", "nginx", "-g", "daemon off;"]
     networks:
       - application
     depends_on:
